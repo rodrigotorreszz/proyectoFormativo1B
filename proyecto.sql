@@ -58,6 +58,15 @@ CREATE TABLE paciente (
     fechaNacimiento VARCHAR2(50)
 );
 
+select * from paciente;
+
+INSERT INTO paciente (nombres, idTipoSangre, telefono, enfermedad, idHabitacion, fechaNacimiento)
+VALUES ('María Gómez', 2, '555-5678', 'Diabetes', 102, '1975-11-23');
+
+INSERT INTO paciente (nombres, idTipoSangre, telefono, enfermedad, idHabitacion, fechaNacimiento)
+VALUES ('Carlos Martínez', 3, '555-8765', 'Asma', 103, '1990-02-05');
+
+
 CREATE TABLE paciente_medicamento (
     idPaciente INT,
     idMedicamento INT,
