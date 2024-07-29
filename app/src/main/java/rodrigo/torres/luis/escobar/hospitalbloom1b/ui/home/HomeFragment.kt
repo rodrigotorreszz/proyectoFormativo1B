@@ -42,14 +42,20 @@ private var _binding: FragmentHomeBinding? = null
       fun obtenerPacientes(): List<tbPacientes>{
           val objConexion = ClaseConexion().cadenaConexion()
           val statement = objConexion?.createStatement()
-          val resulSet = statement?.executeQuery("select nombres from paciente")!!
+          val resulSet = statement?.executeQuery("select * from paciente")!!
 
           val listaPacientes = mutableListOf<tbPacientes>()
 
           while (resulSet.next()){
+              val idPaciente = resulSet.getInt("idPaciente")
               val nombres = resulSet.getString("nombres")
+              val idTipoSangre = resulSet.getString("idTipoSangre")
+              val telefono = resulSet.getString("telefono")
+              val enfermedad = resulSet.getString("enfermedad")
+              val idHabitacion = resulSet.getInt("idHabitacion")
+              val fechaNacimiento = resulSet.getString("fechaNacimiento")
 
-              val pacienteRcv = tbPacientes(nombres)
+              val pacienteRcv = tbPacientes(idPaciente, nombres, idTipoSangre, telefono, enfermedad, idHabitacion, fechaNacimiento)
 
 
               listaPacientes.add(pacienteRcv)
