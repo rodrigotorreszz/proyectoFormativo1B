@@ -8,12 +8,12 @@
     android:padding="20dp">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="213dp"
+        android:layout_height="253dp"
 
-        app:lottie_rawRes="@raw/check"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true">
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/advise">
 
     </com.airbnb.lottie.LottieAnimationView>
 
@@ -21,18 +21,28 @@
         android:id="@+id/dialogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Paciente agregado correctamente"
+        android:text="¿Estas seguro de eliminar al paciente?"
+        android:textAlignment="center"
         android:textColor="@color/azul"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnDialogClose"
+        android:id="@+id/btnDialogYes"
         style="@style/RoundedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/azul"
-        android:text="Cerrar" />
+        android:text="Si" />
+    <Button
+        android:id="@+id/btnDialogNo"
+        style="@style/RoundedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/azul"
+        android:text="No" />
 </LinearLayout>

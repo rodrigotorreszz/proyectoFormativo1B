@@ -1,52 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustNothing"
-    tools:context=".ui.dashboard.DashboardFragment"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    >
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:src="@drawable/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="100dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="88dp"
-        android:padding="0dp"
-        android:rotation="90"
-        android:src="@drawable/triangle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/agregar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        android:text="Editar datos del paciente"
+        android:textColor="@color/azul"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/edit" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/n"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:hint="Nombre"
@@ -59,15 +38,14 @@
         app:boxStrokeColor="@color/azul"
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
-
         app:hintTextColor="@color/azul"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtNombre"
-            android:layout_width="344dp"
+            android:id="@+id/txtNombreE"
+            android:layout_width="match_parent"
             android:layout_height="49dp"
             android:backgroundTint="@android:color/transparent"
             android:inputType="text"
@@ -79,7 +57,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/telefono"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="2dp"
         android:hint="Télefono"
@@ -98,21 +76,19 @@
         app:layout_constraintVertical_bias="0.014">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtTelefono"
-            android:layout_width="344dp"
+            android:id="@+id/txtTelefonoE"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:backgroundTint="#fff"
             android:inputType="number"
-            android:textColor="@color/azul"
-
-            />
+            android:textColor="@color/azul" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fecha"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
@@ -136,8 +112,8 @@
         app:layout_constraintTop_toBottomOf="@+id/telefono">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtFecha"
-            android:layout_width="344dp"
+            android:id="@+id/txtFechaE"
+            android:layout_width="match_parent"
             android:layout_height="49dp"
             android:backgroundTint="@android:color/transparent"
             android:clickable="false"
@@ -151,7 +127,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/medicamento"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
@@ -186,7 +162,7 @@
                 android:text="TextView" />
 
             <Spinner
-                android:id="@+id/spMedicamentos"
+                android:id="@+id/spMedicamentosE"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -197,7 +173,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/habitacion"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
         android:hint="Habitacion"
@@ -230,9 +206,9 @@
                 android:text="TextView" />
 
             <Spinner
-                android:id="@+id/spHabitacion"
+                android:id="@+id/spHabitacionE"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -241,10 +217,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tipoSangre"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
-        android:hint="Tipo de Sangre"
+        android:hint="Tipo de sangre"
         android:textColor="@color/azul"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="40dp"
@@ -255,8 +231,9 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/habitacion">
 
@@ -274,9 +251,9 @@
                 android:text="TextView" />
 
             <Spinner
-                android:id="@+id/spSangre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/spSangreE"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -285,7 +262,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enfermedad"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
         android:hint="Tipo de Sangre"
@@ -318,18 +295,19 @@
                 android:text="TextView" />
 
             <Spinner
-                android:id="@+id/spEnfermedad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/spEnfermedadE"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/hora"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:clickable="false"
@@ -352,8 +330,8 @@
         app:layout_constraintTop_toBottomOf="@+id/enfermedad">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtHora"
-            android:layout_width="344dp"
+            android:id="@+id/txtHoraE"
+            android:layout_width="match_parent"
             android:layout_height="49dp"
             android:backgroundTint="@android:color/transparent"
             android:clickable="false"
@@ -365,19 +343,28 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnAgregar"
+        android:id="@+id/btnEditarE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/RoundedButton"
-        android:layout_width="186dp"
-        android:layout_height="53dp"
-
-        android:layout_marginTop="2dp"
         android:backgroundTint="@color/azul"
-        android:text="Agregar paciente"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hora" />
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="Guardar"
+        android:textAllCaps="false"
+        android:textColor="#fff" />
 
+    <Button
+        android:id="@+id/btnCerrarE"
+        style="@style/RoundedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/azul"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="Cerrar"
+        android:textAllCaps="false"
+        android:textColor="#fff" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

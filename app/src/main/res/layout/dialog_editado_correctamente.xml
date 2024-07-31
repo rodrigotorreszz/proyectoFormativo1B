@@ -21,9 +21,10 @@
         android:id="@+id/dialogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Paciente agregado correctamente"
+        android:text="Paciente editado correctamente"
+        android:textAlignment="center"
         android:textColor="@color/azul"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button

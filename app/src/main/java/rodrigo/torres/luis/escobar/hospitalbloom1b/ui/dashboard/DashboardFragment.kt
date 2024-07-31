@@ -165,28 +165,40 @@ class DashboardFragment : Fragment() {
 
 
         btnAgregar.setOnClickListener {
-
             try {
                 CoroutineScope(Dispatchers.IO).launch {
                     val objConexion = ClaseConexion().cadenaConexion()
-                    val medicamento = ObtenerMedicamentos()
-                    val habitacion = ObtenerHabitaciones()
+                    val medicamentos = ObtenerMedicamentos()
+                    val habitaciones = ObtenerHabitaciones()
                     val sangre = obtenerSangre()
-                    val enfermedad = obtenerEnfermedad()
+                    val enfermedades = obtenerEnfermedad()
 
-                    val addPacientess = objConexion?.prepareStatement("insert into paciente(nombres, idTipoSangre, telefono, idHabitacion, fechaNacimiento, idEnfermedad, horaAplicacion, idMedicamento) values ( ?, ?, ?, ?, ?, ?, ?, ?)")!!
-                    addPacientess.setString(1, txtnombre.text.toString())
-                    addPacientess.setString(2, sangre[spSangre.selectedItemPosition].tipoSangre)
-                    addPacientess.setString(3, txtTelefono.text.toString())
-                    addPacientess.setInt(4, habitacion[spHabitaciones.selectedItemPosition].idHabitacion)
-                    addPacientess.setString(5, txtFecha.text.toString())
-                    addPacientess.setInt(6, enfermedad[spEnfermedad.selectedItemPosition].idEnfermedad)
-                    addPacientess.setString(7, txtHora.text.toString())
-                    addPacientess.setInt(8, medicamento[spMedicamentos.selectedItemPosition].idMedicamento)
-                    addPacientess.executeUpdate()
+                    println("Insertando datos:")
+                    println("Nombre: ${txtnombre.text}")
+                    println("Tipo de Sangre: ${sangre[spSangre.selectedItemPosition].idTipoSangre}")
+                    println("Telefono: ${txtTelefono.text}")
+                    println("Habitación ID: ${habitaciones[spHabitaciones.selectedItemPosition].idHabitacion}")
+                    println("Fecha de Nacimiento: ${txtFecha.text}")
+                    println("Enfermedad ID: ${enfermedades[spEnfermedad.selectedItemPosition].idEnfermedad}")
+                    println("Hora Aplicación: ${txtHora.text}")
+                    println("Medicamento ID: ${medicamentos[spMedicamentos.selectedItemPosition].idMedicamento}")
 
+                    val addPacientes = objConexion?.prepareStatement(
+                        "INSERT INTO paciente (nombres, idTipoSangre, telefono, idHabitacion, fechaNacimiento, idEnfermedad, horaAplicacion, idMedicamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+                    )!!
 
-                    withContext(Dispatchers.Main){
+                    addPacientes.setString(1, txtnombre.text.toString())
+                    addPacientes.setInt(2, sangre[spSangre.selectedItemPosition].idTipoSangre)
+                    addPacientes.setString(3, txtTelefono.text.toString())
+                    addPacientes.setInt(4, habitaciones[spHabitaciones.selectedItemPosition].idHabitacion)
+                    addPacientes.setString(5, txtFecha.text.toString()) // Formato de fecha debe coincidir con el esperado en la base de datos
+                    addPacientes.setInt(6, enfermedades[spEnfermedad.selectedItemPosition].idEnfermedad)
+                    addPacientes.setString(7, txtHora.text.toString()) // Formato de hora debe coincidir con el esperado en la base de datos
+                    addPacientes.setInt(8, medicamentos[spMedicamentos.selectedItemPosition].idMedicamento)
+
+                    addPacientes.executeUpdate()
+
+                    withContext(Dispatchers.Main) {
                         txtnombre.setText("")
                         txtTelefono.setText("")
                         txtFecha.setText("")
@@ -194,10 +206,13 @@ class DashboardFragment : Fragment() {
                     }
 
                 }
-            }catch (ex: Exception){
+            } catch (ex: Exception) {
                 println(ex.message)
+                    Toast.makeText(context, "Error al insertar datos: ${ex.message}", Toast.LENGTH_LONG).show()
+
             }
         }
+
 
         txtHora.setOnClickListener{
             showTimePickerDialog(txtHora)
@@ -207,6 +222,20 @@ class DashboardFragment : Fragment() {
         }
         return root
 
+    }
+
+    private fun showCustomDialog() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val dialog = Dialog(requireContext())
+            dialog.setContentView(R.layout.dialog_paciente_agregado)
+
+            val btnClose = dialog.findViewById<Button>(R.id.btnDialogClose)
+            btnClose.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
     }
 
     private fun showTimePickerDialog(editText: EditText) {
@@ -228,19 +257,7 @@ class DashboardFragment : Fragment() {
         timePickerDialog.show()
     }
 
-    private fun showCustomDialog() {
-        CoroutineScope(Dispatchers.Main).launch {
-            val dialog = Dialog(requireContext())
-            dialog.setContentView(R.layout.dialog_paciente_agregado)
 
-            val btnClose = dialog.findViewById<Button>(R.id.btnDialogClose)
-            btnClose.setOnClickListener {
-                dialog.dismiss()
-            }
-
-            dialog.show()
-        }
-    }
 
     private fun showDatePickerDialog(editText: EditText) {
         val calendar = Calendar.getInstance()

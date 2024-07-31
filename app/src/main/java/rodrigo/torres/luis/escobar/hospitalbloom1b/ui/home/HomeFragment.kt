@@ -46,19 +46,21 @@ private var _binding: FragmentHomeBinding? = null
 
           val listaPacientes = mutableListOf<tbPacientes>()
 
-          while (resulSet.next()){
+          while (resulSet.next()) {
               val idPaciente = resulSet.getInt("idPaciente")
               val nombres = resulSet.getString("nombres")
-              val idTipoSangre = resulSet.getString("idTipoSangre")
+              val idTipoSangre = resulSet.getInt("idTipoSangre") // Cambiado a getInt
               val telefono = resulSet.getString("telefono")
               val idHabitacion = resulSet.getInt("idHabitacion")
               val fechaNacimiento = resulSet.getString("fechaNacimiento")
               val idEnfermedad = resulSet.getInt("idEnfermedad")
+              val horaAplicacion = resulSet.getString("horaAplicacion") // Añadido
+              val idMedicamento = resulSet.getInt("idMedicamento") // Añadido
 
-
-              val pacienteRcv = tbPacientes(idPaciente, nombres, idTipoSangre, telefono, idHabitacion, fechaNacimiento, idEnfermedad)
-
-
+              val pacienteRcv = tbPacientes(
+                  idPaciente, nombres, idTipoSangre, telefono, idHabitacion,
+                  fechaNacimiento, idEnfermedad, horaAplicacion, idMedicamento
+              )
               listaPacientes.add(pacienteRcv)
           }
           return listaPacientes
@@ -74,6 +76,7 @@ private var _binding: FragmentHomeBinding? = null
 
     return root
   }
+
 
 override fun onDestroyView() {
         super.onDestroyView()
