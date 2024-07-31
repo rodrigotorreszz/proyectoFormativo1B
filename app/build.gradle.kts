@@ -36,6 +36,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -45,6 +46,9 @@ dependencies {
     implementation(libs.material)
     implementation ("com.airbnb.android:lottie:6.4.1")
     implementation ("com.oracle.database.jdbc:ojdbc6:11.2.0.4")
+
+    implementation("com.google.android.material:material:1.12.0")
+
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
