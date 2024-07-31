@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment"
     android:windowSoftInputMode="adjustNothing"
+    tools:context=".ui.dashboard.DashboardFragment"
 
     >
 
@@ -15,7 +15,6 @@
         android:layout_height="190dp"
         android:src="@drawable/header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,17 +39,16 @@
         android:src="@drawable/agregar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/n"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="346dp"
-        android:layout_height="70dp"
-        android:layout_margin="16dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:hint="Nombre"
         android:textColor="@color/azul"
         app:boxBackgroundMode="outline"
@@ -61,15 +59,12 @@
         app:boxStrokeColor="@color/azul"
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
-        app:hintTextColor="@color/azul"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369"
 
-        >
+        app:hintTextColor="@color/azul"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtNombre"
@@ -86,8 +81,8 @@
         android:id="@+id/telefono"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="344dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:hint="Télefono"
         android:textColor="@color/azul"
         app:boxCornerRadiusBottomEnd="40dp"
@@ -96,12 +91,12 @@
         app:boxCornerRadiusTopStart="40dp"
         app:boxStrokeColor="@color/azul"
         app:hintTextColor="@color/azul"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+        app:layout_constraintBottom_toTopOf="@+id/fecha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/n"
-        app:layout_constraintVertical_bias="0.241">
+        app:layout_constraintVertical_bias="0.014">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtTelefono"
@@ -119,9 +114,9 @@
         android:id="@+id/fecha"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="346dp"
-        android:layout_height="70dp"
-        android:layout_margin="16dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="false"
         android:focusable="false"
         android:hint="Fecha de nacimiento"
@@ -135,8 +130,9 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/medicamento"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/telefono">
 
@@ -157,8 +153,9 @@
         android:id="@+id/medicamento"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="346dp"
-        android:layout_height="70dp"
-        android:layout_margin="16dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:hint="Medicamento"
         android:textColor="@color/azul"
         app:boxBackgroundMode="outline"
@@ -170,14 +167,15 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/habitacion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fecha">
 
         <Spinner
             android:id="@+id/spMedicamentos"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -186,8 +184,8 @@
         android:id="@+id/habitacion"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="346dp"
-        android:layout_height="70dp"
-        android:layout_margin="16dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:hint="Habitacion"
         android:textColor="@color/azul"
         app:boxBackgroundMode="outline"
@@ -200,15 +198,111 @@
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/azul"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicamento">
 
         <Spinner
             android:id="@+id/spHabitacion"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tipoSangre"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="346dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:hint="Tipo de Sangre"
+        android:textColor="@color/azul"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="40dp"
+        app:boxCornerRadiusBottomStart="40dp"
+        app:boxCornerRadiusTopEnd="40dp"
+        app:boxCornerRadiusTopStart="40dp"
+        app:boxStrokeColor="@color/azul"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habitacion">
+
+        <Spinner
+            android:id="@+id/spSangre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enfermedad"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="346dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:hint="Tipo de Sangre"
+        android:textColor="@color/azul"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="40dp"
+        app:boxCornerRadiusBottomStart="40dp"
+        app:boxCornerRadiusTopEnd="40dp"
+        app:boxCornerRadiusTopStart="40dp"
+        app:boxStrokeColor="@color/azul"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tipoSangre">
+
+        <Spinner
+            android:id="@+id/spEnfermedad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/hora"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="346dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:hint="Hora aplicacion medicamento"
+        android:textColor="@color/azul"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="40dp"
+        app:boxCornerRadiusBottomStart="40dp"
+        app:boxCornerRadiusTopEnd="40dp"
+        app:boxCornerRadiusTopStart="40dp"
+        app:boxStrokeColor="@color/azul"
+        app:boxStrokeWidth="1dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enfermedad">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtHora"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_width="344dp"
+            android:layout_height="49dp"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/azul" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -216,15 +310,15 @@
         style="@style/RoundedButton"
         android:layout_width="186dp"
         android:layout_height="53dp"
-        android:layout_marginTop="44dp"
+
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/azul"
         android:text="Agregar paciente"
-
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/habitacion" />
+        app:layout_constraintTop_toBottomOf="@+id/hora" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

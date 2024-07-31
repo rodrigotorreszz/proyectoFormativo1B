@@ -27,4 +27,8 @@
         <item name="android:colorAccent">#0F2D57</item>
 
     </style>
+    
+    <style name="TimePicker" parent="android:Theme.Material.Dialog">
+        <item name="android:colorAccent">@color/azul</item>
+    </style>
 </resources>

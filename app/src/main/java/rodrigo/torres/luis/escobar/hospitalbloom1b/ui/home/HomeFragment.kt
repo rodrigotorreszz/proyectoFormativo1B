@@ -51,11 +51,12 @@ private var _binding: FragmentHomeBinding? = null
               val nombres = resulSet.getString("nombres")
               val idTipoSangre = resulSet.getString("idTipoSangre")
               val telefono = resulSet.getString("telefono")
-              val enfermedad = resulSet.getString("enfermedad")
               val idHabitacion = resulSet.getInt("idHabitacion")
               val fechaNacimiento = resulSet.getString("fechaNacimiento")
+              val idEnfermedad = resulSet.getInt("idEnfermedad")
 
-              val pacienteRcv = tbPacientes(idPaciente, nombres, idTipoSangre, telefono, enfermedad, idHabitacion, fechaNacimiento)
+
+              val pacienteRcv = tbPacientes(idPaciente, nombres, idTipoSangre, telefono, idHabitacion, fechaNacimiento, idEnfermedad)
 
 
               listaPacientes.add(pacienteRcv)
