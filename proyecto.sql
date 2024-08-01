@@ -14,20 +14,12 @@ INSERT INTO tipoSangre VALUES (6, 'AB-');
 INSERT INTO tipoSangre VALUES (7, 'O+');
 INSERT INTO tipoSangre VALUES (8, 'O-');
 
-CREATE TABLE camas (
-    idCama INT PRIMARY KEY
-);
 
-INSERT INTO camas (idCama) VALUES (1);
-INSERT INTO camas (idCama) VALUES (2);
-INSERT INTO camas (idCama) VALUES (3);
-INSERT INTO camas (idCama) VALUES (4);
-INSERT INTO camas (idCama) VALUES (5);
+drop table habitaciones cascade constraints;
 
 
 CREATE TABLE habitaciones (
-    idHabitacion INT PRIMARY KEY,
-    idCama INT REFERENCES camas(idCama)
+    idHabitacion INT PRIMARY KEY
 );
 
 INSERT INTO habitaciones (idHabitacion, idCama) VALUES (101, 1);
@@ -74,7 +66,6 @@ CREATE TABLE paciente (
 );
 
 
-drop table paciente cascade constraints;
 select * from paciente;
 
 INSERT INTO paciente (nombres, idTipoSangre, telefono, idHabitacion, fechaNacimiento, idEnfermedad, horaAplicacion, idMedicamento)

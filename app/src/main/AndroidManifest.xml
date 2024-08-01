@@ -13,9 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalBloom1B"
-        tools:targetApi="31"
         android:windowSoftInputMode="adjustNothing"
-        >
+        tools:targetApi="31">
+        <activity
+            android:name=".informacionPaciente"
+            android:exported="false" />
         <activity
             android:name=".itemPaciente"
             android:exported="false" />

@@ -11,12 +11,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Space
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar.DisplayOptions
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.CoroutineScope

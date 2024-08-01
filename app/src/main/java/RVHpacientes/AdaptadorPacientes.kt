@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.*
 import modelo.*
 import rodrigo.torres.luis.escobar.hospitalbloom1b.R
+import rodrigo.torres.luis.escobar.hospitalbloom1b.informacionPaciente
 import java.util.*
 
 class AdaptadorPacientes(var datos: List<tbPacientes>) : RecyclerView.Adapter<ViewHolderPacientes>() {
@@ -120,6 +122,32 @@ class AdaptadorPacientes(var datos: List<tbPacientes>) : RecyclerView.Adapter<Vi
     override fun onBindViewHolder(holder: ViewHolderPacientes, position: Int) {
         val item = datos[position]
         holder.txtNombrePaciente.text = item.nombres
+
+        holder.cvPaciente.setOnClickListener{
+            GlobalScope.launch(Dispatchers.IO) {
+                val nombreSangre = obtenerNombreSangre(item.idTipoSangre)
+                val nombreEnfermedad = obtenerNombreEnfermedad(item.idEnfermedad)
+                val nombreMedicamento = obtenerNombreMedicamento(item.idMedicamento)
+
+                withContext(Dispatchers.Main) {
+                    val context = holder.cvPaciente.context
+                    val intentInfo = Intent(context, informacionPaciente::class.java)
+
+                    intentInfo.putExtra("idPaciente", item.idPaciente.toString())
+                    intentInfo.putExtra("nombres", item.nombres)
+                    intentInfo.putExtra("tipoSangre", nombreSangre)
+                    intentInfo.putExtra("telefono", item.telefono)
+                    intentInfo.putExtra("habitacion", item.idHabitacion.toString())
+                    intentInfo.putExtra("fechaNacimiento", item.fechaNacimiento)
+                    intentInfo.putExtra("enfermedad", nombreEnfermedad)
+                    intentInfo.putExtra("horaAplicacion", item.horaAplicacion)
+                    intentInfo.putExtra("medicamento", nombreMedicamento)
+
+                    context.startActivity(intentInfo)
+                }
+            }
+        }
+
 
         holder.imvEliminar.setOnClickListener {
             showConfirmDeleteDialog(holder.itemView.context, item.idPaciente)
@@ -361,4 +389,43 @@ class AdaptadorPacientes(var datos: List<tbPacientes>) : RecyclerView.Adapter<Vi
 
         dialog.show()
     }
+
+    private fun obtenerNombreSangre(idTipoSangre: Int): String {
+        val objConexion = ClaseConexion().cadenaConexion()
+        val statement = objConexion?.prepareStatement("SELECT tipoSangre FROM tipoSangre WHERE idTipoSangre = ?")
+        statement?.setInt(1, idTipoSangre)
+        val resultSet = statement?.executeQuery()
+        return if (resultSet?.next() == true) {
+            resultSet.getString("tipoSangre")
+        } else {
+            "Desconocido"
+        }
+    }
+
+
+
+    private fun obtenerNombreEnfermedad(idEnfermedad: Int): String {
+        val objConexion = ClaseConexion().cadenaConexion()
+        val statement = objConexion?.prepareStatement("SELECT enfermedad FROM enfermedad WHERE idEnfermedad = ?")
+        statement?.setInt(1, idEnfermedad)
+        val resultSet = statement?.executeQuery()
+        return if (resultSet?.next() == true) {
+            resultSet.getString("enfermedad")
+        } else {
+            "Desconocido"
+        }
+    }
+
+    private fun obtenerNombreMedicamento(idMedicamento: Int): String {
+        val objConexion = ClaseConexion().cadenaConexion()
+        val statement = objConexion?.prepareStatement("SELECT nombre FROM medicamento WHERE idMedicamento = ?")
+        statement?.setInt(1, idMedicamento)
+        val resultSet = statement?.executeQuery()
+        return if (resultSet?.next() == true) {
+            resultSet.getString("nombre")
+        } else {
+            "Desconocido"
+        }
+    }
+
 }
